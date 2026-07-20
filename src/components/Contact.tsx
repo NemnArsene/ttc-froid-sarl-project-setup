@@ -6,6 +6,7 @@ import { Reveal } from "./Reveal";
 import { BRAND, SERVICES } from "../constants/tokens";
 
 const subjects = ["Particulier", "Entreprise", "Industrie", "Hôtellerie", "Santé", "Autre"];
+const requestTypes = ["Service de maintenance", "Achat", "Demande de devis"];
 
 export function Contact() {
   const [loading, setLoading] = useState(false);
@@ -15,7 +16,7 @@ export function Contact() {
     email: "",
     phone: "",
     company: "",
-    subject: SERVICES[0].id,
+    requestType: requestTypes[0],
     profile: "Entreprise",
     message: "",
   });
@@ -27,9 +28,22 @@ export function Contact() {
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+
+    // Format the email body
+    const body = `Nom: ${data.name}
+Société: ${data.company || "N/A"}
+Téléphone: ${data.phone}
+Email: ${data.email || "N/A"}
+Profil: ${data.profile}
+Type de demande: ${data.requestType}
+
+Message:
+${data.message}`;
+
     setTimeout(() => {
       setLoading(false);
       setSent(true);
+      window.location.href = `mailto:${BRAND.email}?subject=${encodeURIComponent(data.requestType + " - " + data.name)}&body=${encodeURIComponent(body)}`;
     }, 1200);
   };
 
@@ -97,7 +111,7 @@ export function Contact() {
                         type="button"
                         onClick={() => {
                           setSent(false);
-                          setData({ name: "", email: "", phone: "", company: "", subject: SERVICES[0].id, profile: "Entreprise", message: "" });
+                          setData({ name: "", email: "", phone: "", company: "", requestType: requestTypes[0], profile: "Entreprise", message: "" });
                         }}
                         className="mt-6 text-sm text-ice-100/60 hover:text-white transition-colors"
                       >
@@ -125,11 +139,11 @@ export function Contact() {
                         options={subjects}
                       />
                       <Select
-                        label="Service souhaité"
-                        name="subject"
-                        value={data.subject}
+                        label="Type de demande"
+                        name="requestType"
+                        value={data.requestType}
                         onChange={onChange}
-                        options={SERVICES.map((s) => ({ value: s.id, label: s.short }))}
+                        options={requestTypes}
                       />
 
                       <div className="sm:col-span-2">

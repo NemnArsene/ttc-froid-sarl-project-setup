@@ -16,13 +16,13 @@ export const BRAND = {
   phoneWork: "+237655026667",
   phoneWorkDisplay: "+237 6 55 02 66 67",
   whatsapp: "237655026667",
-  email: "contact@ttcfroid.cm",
+  email: "ttcfroidsarl@gmail.com",
   address: "Douala, Littoral — Cameroun",
   hours: "Lun–Sam · 07h30 – 19h00",
   emergencyHours: "Dépannage 24/7",
   social: {
     facebook: "https://web.facebook.com/TTCFROIDSARL",
-    linkedin: "https://linkedin.com/company/ttcfroid",
+    linkedin: "https://www.linkedin.com/in/tamekong-tagou/",
     instagram: "https://instagram.com/ttcfroid",
   },
 } as const;
@@ -204,8 +204,8 @@ export const PROJECTS = [
 
 export const TESTIMONIALS = [
   {
-    name: "Dr. Emmanuel Mbeng",
-    role: "Responsable Technique — Hôpital Laquintinie",
+    name: "Mr MBA NARCISSE DOUALLA",
+    role: "Directeur Technique — Hôpital Laquintinie",
     text: "TTC FROID SARL assure la maintenance de nos installations critiques depuis plusieurs années. Leur réactivité et professionnalisme en milieu hospitalier sont irréprochables. Un partenaire de confiance.",
   },
   {
